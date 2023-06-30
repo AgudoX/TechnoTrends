@@ -7,9 +7,10 @@ export const ProductProvider = ({ children }) => {
 		category: 'all',
 		minPrice: 0
 	})
+	const [page, setPage] = useState(1)
 
 	return (
-		<ProductsContext.Provider value={{ filters, setFilters }}>
+		<ProductsContext.Provider value={{ filters, setFilters, page, setPage }}>
 			{children}
 		</ProductsContext.Provider>
 	)

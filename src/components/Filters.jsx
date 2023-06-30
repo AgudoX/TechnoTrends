@@ -5,12 +5,13 @@ import { getUniqueCategories } from '../services/categories'
 import './Filters.css'
 
 export const Filters = () => {
-	const { filters, setFilters } = useFilters()
+	const { filters, setFilters, resetPage } = useFilters()
 	const categories = getUniqueCategories(products)
 	const minPriceFilterId = useId()
 	const categoryFilterId = useId()
 
 	const handleMinPrice = event => {
+		resetPage()
 		setFilters(filters => {
 			return {
 				...filters,
@@ -20,6 +21,7 @@ export const Filters = () => {
 	}
 
 	const handleChangeCategory = event => {
+		resetPage()
 		setFilters(previousFilters => ({
 			...previousFilters,
 			category: event.target.value
